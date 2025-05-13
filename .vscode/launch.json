@@ -11,8 +11,8 @@
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
-            "toolchainPrefix": "arm-none-eabi",
-            //"gdbPath": "gdb-multiarch",
+            //"toolchainPrefix": "arm-none-eabi",
+            "gdbPath": "gdb-multiarch",
             //"gdbPath": "arm-none-eabi-gdb",
             "device": "RP2040",
             "configFiles": [
