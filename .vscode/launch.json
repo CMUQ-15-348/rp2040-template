@@ -7,7 +7,7 @@
             "name": "Cortex Debug CMSIS-DAP",
             "cwd": "${workspaceRoot}",
             // "executable": "${command:cmake.launchTargetPath}",
-            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/rp2040_blink",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/{{ crate_name }}",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
