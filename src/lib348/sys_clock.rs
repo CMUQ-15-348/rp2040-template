@@ -75,6 +75,12 @@ pub fn init_clocks() {
     // Configure the watchdog tick counter so that it divides by 12, leading to one tick every us.  (Because the XOSC is 12MHz.)
     // Without this being set properly, the TIMER doesn't count at the correct interval.
     write_reg(WATCHDOG_BASE + 0x2c, 12 | 1 << 9); // Set the divider to 12 and enable the watchdog
+
+    // Configure the timer not to pause during debugging. Otherwise, we can't single step through a delay()
+    // See...
+    // https://github.com/raspberrypi/debugprobe/issues/45
+    // https://github.com/raspberrypi/pico-sdk/issues/1586
+    write_reg(TIMER_BASE + 0x2c, 0);
 }
 
 /* How many microseconds have passed since the processor booted up? */
