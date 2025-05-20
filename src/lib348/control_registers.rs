@@ -1,8 +1,9 @@
 use core::ptr::{read_volatile, write_volatile};
 
-// Some helper functions to directly read/write registers.
-// The are unsafe because they dereference raw pointers.
-// The are volatile because the compiler should not optimize them away.
+/* Some helper functions to directly read/write registers.
+ * The are unsafe because they dereference raw pointers.
+ * The are volatile because the compiler should not optimize them away.
+ */
 pub fn read_reg(addr: u32) -> u32 {
     unsafe { read_volatile(addr as *const u32) }
 }
@@ -27,7 +28,7 @@ pub fn clear_bits(addr: u32, mask: u32) {
     }
 }
 
-// Some base addresses for pointers.  These are taken directly from the rp2040 datasheet.
+/* Some base addresses for pointers.  These are taken directly from the rp2040 datasheet. */
 pub const ROM_BASE: u32 = 0x0000_0000_u32;
 pub const XIP_BASE: u32 = 0x1000_0000_u32;
 pub const XIP_MAIN_BASE: u32 = 0x1000_0000_u32;
@@ -85,7 +86,7 @@ pub const XIP_AUX_BASE: u32 = 0x5040_0000_u32;
 pub const SIO_BASE: u32 = 0xd000_0000_u32;
 pub const PPB_BASE: u32 = 0xe000_0000_u32;
 
-// Some offsets
+/* Some offsets into those registers */
 pub const IC_ENABLE: u32 = 0x6c;
 pub const IC_CON: u32 = 0x00;
 pub const IC_TAR: u32 = 0x04;
@@ -100,4 +101,5 @@ pub const SIO_GPIO_OE_CLR: u32 = 0x28;
 pub const SIO_GPIO_OUT: u32 = 0x10;
 pub const SIO_GPIO_OUT_SET: u32 = 0x14;
 pub const SIO_GPIO_OUT_CLR: u32 = 0x18;
+pub const SIO_GPIO_OUT_XOR: u32 = 0x1c;
 pub const SIO_GPIO_IN: u32 = 0x04;
